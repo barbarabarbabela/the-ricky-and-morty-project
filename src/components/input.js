@@ -2,7 +2,7 @@ import React from "react";
 
 function Input({ id, icon: Icon, ...props }) {
   return (
-    <div className="flex items-center justify-between gap-2 p-2 rounded-full border border-solid bg-white h-[36px]">
+    <div className="flex items-center p-2 rounded-full bg-white">
       <input
         id={id}
         {...props}

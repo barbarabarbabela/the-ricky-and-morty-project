@@ -18,7 +18,7 @@ function NavBar() {
       <Link
         key={link.label}
         to={link.path}
-        className="hover:text-[#FF9800] cursor-pointer text-black"
+        className="hover:text-primary cursor-pointer"
       >
         {link.label}
       </Link>

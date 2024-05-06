@@ -1,21 +1,28 @@
 import React from "react";
-import { IoMdMenu } from "react-icons/io";
-import UtilityBar from "./utility-bar";
+import Input from "./input";
+import { GoSearch } from "react-icons/go";
+import FilterMenuBySpecie from "./filter-by-species";
+import FilterMenuByStatus from "./filter-by-status";
 
 function FilterMenu() {
-  const [isExpansible, setIsExpansible] = React.useState(false);
-
-  const handleMenu = () => {
-    setIsExpansible(!isExpansible);
-  };
-
   return (
-    <div className="bg-[#FF9800] p-4 flex justify-center">
-      {isExpansible ? <UtilityBar /> : null}
-      <IoMdMenu
-        className="h-7 w-12 cursor-pointer motion-safe:animate-bounce"
-        onClick={handleMenu}
-      />
+    <div className="bg-primary p-3 w-56 text-secondary">
+      <div className="mb-3">
+        <Input
+          id="search"
+          placeholder="Search"
+          icon={GoSearch}
+          onChange={(e) => console.log(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <h1 className="text-xl font-bold">Filtros</h1>
+        <div className="mt-3 text-black flex flex-col">
+          <FilterMenuBySpecie />
+          <FilterMenuByStatus />
+        </div>
+      </div>
     </div>
   );
 }

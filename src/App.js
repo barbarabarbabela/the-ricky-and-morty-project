@@ -1,17 +1,17 @@
 import React from "react";
 
-import Home from "./pages/home";
-import Locations from "./pages/locations";
+import LocationsPage from "./pages/locations-page";
 import Route from "./router/route";
+import CharacterPage from "./pages/character-page";
 
 function App() {
   return (
     <div>
       <Route path="/">
-        <Home />
+        <CharacterPage />{" "}
       </Route>
       <Route path="/locations">
-        <Locations />
+        <LocationsPage />
       </Route>
     </div>
   );

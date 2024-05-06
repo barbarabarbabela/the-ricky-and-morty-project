@@ -1,6 +1,6 @@
 import React from "react";
 
-const RadioButton = ({ name, value, checked, onChange, label }) => {
+const RadioButton = ({ name, onChange, value, checked, props, label }) => {
   return (
     <div className="flex items-center">
       <input
@@ -11,6 +11,7 @@ const RadioButton = ({ name, value, checked, onChange, label }) => {
         checked={checked}
         onChange={onChange}
         className="mr-2"
+        {...props}
       />
       <label htmlFor={value}>{label}</label>
     </div>

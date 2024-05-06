@@ -2,41 +2,28 @@ import React from "react";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import RadioButton from "./radio-button";
+import useFilter from "../hooks/use-filter";
 
-function FilterByStatus() {
-  const [filter, setFilter] = React.useState(false);
-  const [check, setCheck] = React.useState(false);
+function FilterMenuByStatus() {
+  const [openFilterMenu, setOpenFilterMenu] = React.useState(true);
+  const { handleRadioChange } = useFilter();
 
-  const handleFilter = () => {
-    setFilter(!filter);
+  const handleFilterMenu = () => {
+    setOpenFilterMenu(!openFilterMenu);
   };
 
-  const handleCheck = () => {
-    setCheck(!check);
-    console.log(check);
-  };
-
-  const radioOptions = [
+  const statusOptions = [
     {
       label: "Alive",
-      id: "alive",
-      onChange: () => {
-        handleCheck;
-      },
+      value: "alive",
     },
     {
       label: "Dead",
-      id: "dead",
-      onChange: () => {
-        handleCheck;
-      },
+      value: "dead",
     },
     {
       label: "Unknown",
-      id: "alive",
-      onChange: () => {
-        handleCheck;
-      },
+      value: "unknown",
     },
   ];
 
@@ -44,17 +31,30 @@ function FilterByStatus() {
     <div>
       <div
         className="flex gap-3 items-center  cursor-pointer"
-        onClick={handleFilter}
+        onClick={handleFilterMenu}
       >
-        {filter ? <IoIosArrowDroprightCircle /> : <IoIosArrowDropdownCircle />}
-        Filter by status
+        {openFilterMenu ? (
+          <IoIosArrowDroprightCircle />
+        ) : (
+          <IoIosArrowDropdownCircle />
+        )}
+        FilterMenu by status
       </div>
       <div>
-        {!filter ? (
+        {!openFilterMenu ? (
           <div className="flex flex-col ml-6">
-            <RadioButton label="Alive" name="status" />
-            <RadioButton label="Dead" name="status" />
-            <RadioButton label="Unknown" name="status" />
+            {statusOptions.map((option) => {
+              return (
+                <RadioButton
+                  key={option.label}
+                  label={option.label}
+                  name="status"
+                  value={option.value}
+                  checked={option.checked}
+                  onChange={() => handleRadioChange(option.value)}
+                />
+              );
+            })}
           </div>
         ) : null}
       </div>
@@ -62,4 +62,4 @@ function FilterByStatus() {
   );
 }
 
-export default FilterByStatus;
+export default FilterMenuByStatus;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const CharacterContext = createContext();
 
@@ -14,9 +14,21 @@ function Provider({ children }) {
     setCharacterData(response.data.results);
   };
 
+  useEffect(() => {
+    fetchCharacter();
+  }, []);
+  const fetchWithFilter = (filter) => {
+    const filterBy = characterData.filter(
+      (character) => character.filter === filter
+    );
+
+    return fetchWithFilter;
+  };
+
   const valueToShare = {
     characterData,
     fetchCharacter,
+    fetchWithFilter,
   };
 
   return (

@@ -7,29 +7,26 @@ function CharacterCard({
   firstSeen,
 }) {
   return (
-    <div className="text-white flex m-10 shadow-2xl font-mono">
-      <div className="w-[300px]">
+    <div className="text-white bg-[#3C3E44] flex shadow-2xl font-mono border-black border-2 rounded-2xl">
+      <div className="w-[300px] rounded-l-2xl overflow-hidden">
         <img src={src} alt="img" />
       </div>
-      <div className="flex flex-col gap-2 bg-[#3C3E44] p-3 h-[300px] w-[350px]">
-        <h1 className="text-3xl font-bold hover:text-[#FF9800] cursor-pointer">
-          {character}
-        </h1>
-        <p className="flex gap-10 mb-3 font-bold">
+      <div className="p-3 w-[350px]">
+        <h1 className="text-3xl font-bold">{character}</h1>
+
+        <span className="flex gap-10 mb-3 font-bold">
           {status} {species}
-        </p>
-        <div className="flex flex-col gap-3">
-          <p className="flex flex-col text-xl">
+        </span>
+
+        <div>
+          <p className="flex flex-col text-l mb-3">
             Last known location:
-            <span className="hover:text-[#FF9800] cursor-pointer text-lg">
-              {lastLocation}
-            </span>
+            <span className="text-lg">{lastLocation}</span>
           </p>
-          <p className="flex flex-col text-xl">
+
+          <p className="flex flex-col text-l">
             First seen in:
-            <span className="hover:text-[#FF9800] cursor-pointer text-lg">
-              {firstSeen}
-            </span>
+            <span className="text-lg">{firstSeen}</span>
           </p>
         </div>
       </div>

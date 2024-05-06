@@ -4,11 +4,7 @@ import { GoDotFill } from "react-icons/go";
 import CharacterContext from "../context/character-context";
 
 function RenderCard() {
-  const { fetchCharacter, characterData } = React.useContext(CharacterContext);
-
-  React.useEffect(() => {
-    fetchCharacter();
-  }, []);
+  const { characterData } = React.useContext(CharacterContext);
 
   const statusIcon = (character) => {
     if (character.status === "Alive") {
@@ -36,7 +32,7 @@ function RenderCard() {
   };
 
   return (
-    <div className="flex flex-wrap justify-center bg-[#272B33]">
+    <div className="flex flex-wrap justify-center m-10 gap-10">
       {characterData.map((character) => {
         return (
           <div key={character.id}>

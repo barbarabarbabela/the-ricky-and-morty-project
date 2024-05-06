@@ -1,14 +1,12 @@
 import React from "react";
 import RenderCard from "../components/render-card";
-import UtilityBar from "../components/utility-bar";
-import FilterMenu from "../components/filter-menu";
+import PageLayout from "./page-layout";
 
 function CharacterPage() {
   return (
-    <div className="flex">
-      <FilterMenu />
+    <PageLayout>
       <RenderCard />
-    </div>
+    </PageLayout>
   );
 }
 

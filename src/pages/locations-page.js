@@ -1,11 +1,8 @@
 import React from "react";
+import PageLayout from "./page-layout";
 
 function LocationsPage() {
-  return (
-    <div className="flex flex-col w-screen h-screen bg-[#272B33]">
-      Lcoations
-    </div>
-  );
+  return <PageLayout>locations</PageLayout>;
 }
 
 export default LocationsPage;

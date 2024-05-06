@@ -2,28 +2,56 @@ import React from "react";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import RadioButton from "./radio-button";
+import useFilter from "../hooks/use-filter";
 
-function FilterBySpecie() {
-  const [filter, setFilter] = React.useState(false);
+function FilterMenuBySpecie() {
+  const [FilterMenu, setFilterMenu] = React.useState(true);
+  const { handleRadioChange } = useFilter();
 
-  const handleFilter = () => {
-    setFilter(!filter);
+  const handleFilterMenu = () => {
+    setFilterMenu(!FilterMenu);
   };
+
+  const radioOptions = [
+    {
+      label: "Human",
+      value: "human",
+    },
+    {
+      label: "Alien",
+      value: "alien",
+    },
+  ];
 
   return (
     <div>
       <div
         className="flex gap-3 items-center cursor-pointer"
-        onClick={handleFilter}
+        onClick={handleFilterMenu}
       >
-        {filter ? <IoIosArrowDroprightCircle /> : <IoIosArrowDropdownCircle />}
-        Filter by species
+        {FilterMenu ? (
+          <IoIosArrowDroprightCircle />
+        ) : (
+          <IoIosArrowDropdownCircle />
+        )}
+        FilterMenu by species
       </div>
       <div>
-        {!filter ? (
+        {!FilterMenu ? (
           <div className="flex flex-col ml-6">
-            <RadioButton label="Human" name="species" />
-            <RadioButton label="Alien" name="species" />
+            {radioOptions.map((option) => {
+              return (
+                <RadioButton
+                  key={option.label}
+                  label={option.label}
+                  id={option.id}
+                  name="species"
+                  value={option.value}
+                  checked={option.checked}
+                  onChange={() => handleRadioChange(option.value)}
+                />
+              );
+            })}
           </div>
         ) : null}
       </div>
@@ -31,4 +59,4 @@ function FilterBySpecie() {
   );
 }
 
-export default FilterBySpecie;
+export default FilterMenuBySpecie;
