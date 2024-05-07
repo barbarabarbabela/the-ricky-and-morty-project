@@ -7,8 +7,8 @@ function CharacterCard({
   firstSeen,
 }) {
   return (
-    <div className="text-white bg-[#3C3E44] flex shadow-2xl font-mono border-black border-2 rounded-2xl">
-      <div className="w-[300px] rounded-l-2xl overflow-hidden">
+    <div className="text-white bg-[#3C3E44] flex shadow-2xl font-mono border-primary border-2 rounded-2xl">
+      <div className="w-[250px] rounded-l-2xl overflow-hidden">
         <img src={src} alt="img" />
       </div>
       <div className="p-3 w-[350px]">

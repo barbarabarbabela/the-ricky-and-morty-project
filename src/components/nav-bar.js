@@ -25,7 +25,7 @@ function NavBar() {
     );
   });
   return (
-    <div className="flex gap-72 bg-slate-200 text-xl font-bold justify-center">
+    <div className="flex gap-72 bg-[#b2b0b1af]  text-xl font-bold justify-center">
       {renderedLinks}
     </div>
   );

@@ -3,11 +3,9 @@ import Header from "../components/header";
 import NavBar from "../components/nav-bar";
 import { IoMdMenu } from "react-icons/io";
 import FilterMenu from "../components/filter-menu";
-import useFilter from "../hooks/use-filter";
 
 function PageLayout({ children }) {
   const [isExpansible, setIsExpansible] = React.useState(false);
-  const { selectedFilter, handleFilterChange } = useFilter();
 
   const handleMenu = () => {
     setIsExpansible(!isExpansible);
@@ -23,12 +21,7 @@ function PageLayout({ children }) {
             className="h-7 w-12 cursor-pointer motion-safe:animate-bounce"
             onClick={handleMenu}
           />
-          {isExpansible ? (
-            <FilterMenu
-              selectedFilter={selectedFilter}
-              onFilterChange={handleFilterChange}
-            />
-          ) : null}
+          {isExpansible ? <FilterMenu /> : null}
         </div>
         {children}
       </div>

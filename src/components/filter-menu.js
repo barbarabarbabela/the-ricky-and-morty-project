@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "./input";
 import { GoSearch } from "react-icons/go";
 import FilterMenuBySpecie from "./filter-by-species";
 import FilterMenuByStatus from "./filter-by-status";
-import useFilter from "../hooks/use-filter";
+import { FiSliders } from "react-icons/fi";
 
 function FilterMenu() {
   return (
@@ -18,7 +18,10 @@ function FilterMenu() {
       </div>
 
       <div>
-        <h1 className="text-xl font-bold">Filtros</h1>
+        <div className="flex items-center gap-2">
+          <FiSliders />
+          <h1 className="text-xl font-bold">Filtros</h1>
+        </div>
         <div className="mt-3 text-black flex flex-col">
           <FilterMenuBySpecie />
           <FilterMenuByStatus />
