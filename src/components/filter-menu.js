@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "./input";
 import { GoSearch } from "react-icons/go";
 import FilterMenuBySpecie from "./filter-by-species";
 import FilterMenuByStatus from "./filter-by-status";
+import useFilter from "../hooks/use-filter";
 
 function FilterMenu() {
   return (

@@ -1,13 +1,8 @@
-import React from "react";
+import { useContext } from "react";
+import { FilterContext } from "../context/filter-context";
 
 function useFilter() {
-  const [selectedStatus, setSelectedStatus] = React.useState("");
-
-  const handleRadioChange = (value) => {
-    setSelectedStatus(value);
-  };
-
-  return { handleRadioChange, selectedStatus };
+  return useContext(FilterContext);
 }
 
 export default useFilter;

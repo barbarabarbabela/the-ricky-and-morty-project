@@ -2,9 +2,12 @@ import React from "react";
 import CharacterCard from "./character-card";
 import { GoDotFill } from "react-icons/go";
 import CharacterContext from "../context/character-context";
+import useCharacterContext from "../hooks/use-character-context";
+import useFilter from "../hooks/use-filter";
 
 function RenderCard() {
-  const { characterData } = React.useContext(CharacterContext);
+  const { characterData } = useCharacterContext();
+  const { selectedFilter } = useFilter();
 
   const statusIcon = (character) => {
     if (character.status === "Alive") {
@@ -33,20 +36,106 @@ function RenderCard() {
 
   return (
     <div className="flex flex-wrap justify-center m-10 gap-10">
-      {characterData.map((character) => {
-        return (
-          <div key={character.id}>
-            <CharacterCard
-              character={character.name}
-              species={character.species}
-              status={statusIcon(character)}
-              lastLocation={character.location.name}
-              firstSeen={character.origin.name}
-              src={character.image}
-            />
-          </div>
-        );
-      })}
+      {selectedFilter === null &&
+        characterData.map((character) => {
+          return (
+            <div key={character.id}>
+              <CharacterCard
+                character={character.name}
+                species={character.species}
+                status={statusIcon(character)}
+                lastLocation={character.location.name}
+                firstSeen={character.origin.name}
+                src={character.image}
+              />
+            </div>
+          );
+        })}
+      {selectedFilter === "dead" &&
+        characterData
+          .filter((character) => character.status === "Dead")
+          .map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  character={character.name}
+                  species={character.species}
+                  status={statusIcon(character)}
+                  lastLocation={character.location.name}
+                  firstSeen={character.origin.name}
+                  src={character.image}
+                />
+              </div>
+            );
+          })}
+      {selectedFilter === "alive" &&
+        characterData
+          .filter((character) => character.status === "Alive")
+          .map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  character={character.name}
+                  species={character.species}
+                  status={statusIcon(character)}
+                  lastLocation={character.location.name}
+                  firstSeen={character.origin.name}
+                  src={character.image}
+                />
+              </div>
+            );
+          })}
+      {selectedFilter === "unknown" &&
+        characterData
+          .filter((character) => character.status === "unknown")
+          .map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  character={character.name}
+                  species={character.species}
+                  status={statusIcon(character)}
+                  lastLocation={character.location.name}
+                  firstSeen={character.origin.name}
+                  src={character.image}
+                />
+              </div>
+            );
+          })}
+      {selectedFilter === "human" &&
+        characterData
+          .filter((character) => character.species === "Human")
+          .map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  character={character.name}
+                  species={character.species}
+                  status={statusIcon(character)}
+                  lastLocation={character.location.name}
+                  firstSeen={character.origin.name}
+                  src={character.image}
+                />
+              </div>
+            );
+          })}
+      {selectedFilter === "alien" &&
+        characterData
+          .filter((character) => character.species === "Alien")
+          .map((character) => {
+            return (
+              <div key={character.id}>
+                <CharacterCard
+                  character={character.name}
+                  species={character.species}
+                  status={statusIcon(character)}
+                  lastLocation={character.location.name}
+                  firstSeen={character.origin.name}
+                  src={character.image}
+                />
+              </div>
+            );
+          })}
     </div>
   );
 }

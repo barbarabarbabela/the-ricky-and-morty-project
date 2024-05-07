@@ -1,12 +1,15 @@
 import React from "react";
 import RenderCard from "../components/render-card";
 import PageLayout from "./page-layout";
+import { FilterProvider } from "../context/filter-context";
 
 function CharacterPage() {
   return (
-    <PageLayout>
-      <RenderCard />
-    </PageLayout>
+    <FilterProvider>
+      <PageLayout>
+        <RenderCard />
+      </PageLayout>
+    </FilterProvider>
   );
 }
 

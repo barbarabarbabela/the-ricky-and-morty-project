@@ -6,7 +6,7 @@ import useFilter from "../hooks/use-filter";
 
 function FilterMenuBySpecie() {
   const [FilterMenu, setFilterMenu] = React.useState(true);
-  const { handleRadioChange } = useFilter();
+  const { handleFilterChange } = useFilter();
 
   const handleFilterMenu = () => {
     setFilterMenu(!FilterMenu);
@@ -34,7 +34,7 @@ function FilterMenuBySpecie() {
         ) : (
           <IoIosArrowDropdownCircle />
         )}
-        FilterMenu by species
+        Filter by species
       </div>
       <div>
         {!FilterMenu ? (
@@ -48,7 +48,8 @@ function FilterMenuBySpecie() {
                   name="species"
                   value={option.value}
                   checked={option.checked}
-                  onChange={() => handleRadioChange(option.value)}
+                  onChange={() => handleFilterChange(option.value)}
+                  onFilterChange={option.value}
                 />
               );
             })}

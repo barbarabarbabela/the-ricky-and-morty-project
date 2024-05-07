@@ -6,7 +6,7 @@ import useFilter from "../hooks/use-filter";
 
 function FilterMenuByStatus() {
   const [openFilterMenu, setOpenFilterMenu] = React.useState(true);
-  const { handleRadioChange } = useFilter();
+  const { handleFilterChange } = useFilter();
 
   const handleFilterMenu = () => {
     setOpenFilterMenu(!openFilterMenu);
@@ -38,7 +38,7 @@ function FilterMenuByStatus() {
         ) : (
           <IoIosArrowDropdownCircle />
         )}
-        FilterMenu by status
+        Filter by status
       </div>
       <div>
         {!openFilterMenu ? (
@@ -51,7 +51,7 @@ function FilterMenuByStatus() {
                   name="status"
                   value={option.value}
                   checked={option.checked}
-                  onChange={() => handleRadioChange(option.value)}
+                  onChange={() => handleFilterChange(option.value)}
                 />
               );
             })}

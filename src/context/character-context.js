@@ -17,18 +17,10 @@ function Provider({ children }) {
   useEffect(() => {
     fetchCharacter();
   }, []);
-  const fetchWithFilter = (filter) => {
-    const filterBy = characterData.filter(
-      (character) => character.filter === filter
-    );
-
-    return fetchWithFilter;
-  };
 
   const valueToShare = {
     characterData,
     fetchCharacter,
-    fetchWithFilter,
   };
 
   return (
