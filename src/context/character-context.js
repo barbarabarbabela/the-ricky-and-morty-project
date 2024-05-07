@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 const CharacterContext = createContext();
 
-function Provider({ children }) {
+function CharacterProvider({ children }) {
   const [characterData, setCharacterData] = useState([]);
 
   const fetchCharacter = async () => {
@@ -30,5 +30,5 @@ function Provider({ children }) {
   );
 }
 
-export { Provider };
+export { CharacterProvider };
 export default CharacterContext;
